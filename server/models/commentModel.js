@@ -11,7 +11,11 @@ const commentSchema = new mongoose.Schema({
     },
     content:{
         type:String,
-        require:false
+        require:true
+    },
+    post:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Content"
     }
 },{
     timestamps:true

@@ -17,6 +17,7 @@ connectDb()
 //routes
 app.use('/api/users',require('./routes/userRoutes'))
 app.use('/api/posts',require('./routes/contentRoutes'))
+app.use('/api/comments',require('./routes/commentRoutes'))
 
 
 app.listen(port,()=>console.log(`SERVER ACTIVE ON PORT ${port}`))

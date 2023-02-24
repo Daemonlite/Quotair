@@ -30,9 +30,6 @@ const contentSchema = new mongoose.Schema({
     comments:{
         type:Array,
     },
-    replies:{
-        type:Array,
-    },
     user:{
         type:String,
         require:true

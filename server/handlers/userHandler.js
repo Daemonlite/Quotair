@@ -73,7 +73,7 @@ const register = async (req, res) => {
     const user = await User.findOne({ email });
     !user && res.status(400).json("user cant be found");
     if (user && (await bcrypt.compare(password, user.password))) {
-      const { username, id, isAdmin,isVerified } = user;
+      const { username, id, isAdmin} = user;
       const token = jwt.sign({ username, id, isAdmin }, process.env.SECRET, {
         expiresIn: "2d",
       });
