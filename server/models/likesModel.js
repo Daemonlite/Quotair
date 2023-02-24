@@ -2,12 +2,12 @@
 const mongoose = require('mongoose');
 
 const LikeSchema = new mongoose.Schema({
-  userId: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
-  postId: {
+  post: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Content',
     required: true,

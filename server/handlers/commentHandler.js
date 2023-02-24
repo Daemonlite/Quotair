@@ -1,21 +1,21 @@
-const Comment = require('../models/commentModel')
-const Content = require('../models/contentModel')
+const Comment = require("../models/commentModel");
+const Content = require("../models/contentModel");
 
-const getComments = async (req,res) => {
-    try {
-        const comment = await Comment.find();
-        return res.status(200).json(comment);
-      } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: "Failed to retrieve comments" });
-      }
-}
+const getComments = async (req, res) => {
+  try {
+    const comment = await Comment.find();
+    return res.status(200).json(comment);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Failed to retrieve comments" });
+  }
+};
 
-const addComment = async (req,res) => {
-  const {userProfile,userName,content,post} = req.body
+const addComment = async (req, res) => {
+  const { userProfile, userName, content, post } = req.body;
 
-  if(!content){
-    return res.status(400).json({message:"please add comment"})
+  if (!content) {
+    return res.status(400).json({ message: "please add comment" });
   }
 
   let existingPost;
@@ -32,23 +32,21 @@ const addComment = async (req,res) => {
     userProfile,
     userName,
     content,
-    post
-  })
+    post,
+  });
 
- 
   try {
-    
-    await comment.save()
-    existingPost.comments.unshift(comment)
-    await existingPost.save()
- } catch (error) {
-     console.log(error)
-     res.status(400).json({error:error})
- }
- return res.status(201).json(comment)
-}
+    await comment.save();
+    existingPost.comments.unshift(comment);
+    await existingPost.save();
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error });
+  }
+  return res.status(201).json(comment);
+};
 
-const deleteComment = async (req,res) => {
+const deleteComment = async (req, res) => {
   const id = req.params.id;
 
   let comment;
@@ -73,10 +71,9 @@ const deleteComment = async (req,res) => {
   return res
     .status(200)
     .json({ message: "Successfully deleted the  comment." });
-  
-}
+};
 module.exports = {
   getComments,
   addComment,
-  deleteComment
-}
+  deleteComment,
+};
