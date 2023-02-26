@@ -1,0 +1,57 @@
+.find{
+    width: 400px !important;
+}
+.but{
+    width: 350px !important;
+    margin-left: 10px;
+}
+.position{
+    margin-top: 100px;
+}
+
+input{
+    width: 400px !important;
+    margin-left: 20px !important;
+    margin-bottom: 10px;
+}
+a{
+    text-decoration: none !important;
+ 
+}
+.input{
+    border: 1px solid #ccc;
+    width: 58%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+   
+}
+.ava{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.icons{
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    cursor: pointer;
+}
+.post{
+    border: 1px solid #fff;
+    width: 41%;
+    margin-left: 400px;
+    box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.3);
+}
+.follow{
+    margin-left: 250px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+@media (max-width:600px) {
+    .find{
+        display: none !important;
+    }
+}

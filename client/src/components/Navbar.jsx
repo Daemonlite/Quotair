@@ -1,174 +1,55 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import Link from '@mui/material/Link'
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+const Navbar = () => {
+ 
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-         Quotair
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-                 <MenuItem  onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                  <Link href="/profile" variant="body2" sx={{fontSize:"1.1rem",textDecoration:"none"}}>Home</Link>
-                  </Typography>
-                  </MenuItem>
-                  
-                 <MenuItem>
-                 <Typography>
-                 <Link href="/profile" variant="body2" sx={{fontSize:"1.1rem",textDecoration:"none"}}>Trending</Link> 
-                 </Typography>
-                 </MenuItem>
-
-                 <MenuItem>
-                 <Typography>
-                 <Link href="/profile" variant="body2" sx={{fontSize:"1.1rem",textDecoration:"none"}}>Popular</Link> 
-                 </Typography>
-                 </MenuItem>
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Quotair
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-     <div style={{display:'flex',gap:'30px',fontSize:"1.2rem",marginLeft:"400px"}}>
-     <Link sx={{color:"white"}}>Home</Link>
-      <Link sx={{color:"white"}}>Trending</Link>
-      <Link sx={{color:"white"}}>Popular</Link>
-     </div>
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-                  <MenuItem  onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">
-                  <Link href="/profile" variant="body2" sx={{fontSize:"1.4rem",textDecoration:"none"}}>Profile</Link>
-                  <br />
-                  <Button variant="contained">Logout</Button>
-                  </Typography>
-                 
-                 
-                </MenuItem>
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+ <div>
+<nav class="navbar navbar-dark bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark" href="/home">Quaotair</a>
+    <form class="d-flex mt-3 look" role="search">
+          <input class="form control me-2 find" type="search" placeholder="Search" aria-label="Search"/>
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+    <button class="navbar-toggler bg-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Quaotair</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/feed">Popular</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/feed">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/feed">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/feed">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  btn btn-secondary but" href="/login">Login</a>
+          </li>
+        </ul>
+        <br />
+        <button className="btn btn-secondary but">Logout</button>
+     
+      </div>
+    </div>
+  </div>
+</nav>
+ </div>
+  )
 }
-export default ResponsiveAppBar;
+
+export default Navbar
