@@ -13,9 +13,23 @@ const getLikes = async (req,res) => {
 const like = async (req,res) => {
     const {user,post} = req.body
 
-    if(!user || !post ){
+    if(!user || !post  ){
       return  res.status(400).json({message:"could not like post"})
     }
+ 
+    
+       //check if user has already liked post
+       let existingLike;
+       try {
+         existingLike = await Like.findOne({user: user, post: post});
+       } catch (error) {
+         console.log(error);
+       }
+   
+       //if user has already liked post, return error message 
+       if (existingLike) {
+         return res.status(400).json({ message: "User has already liked this post" });
+       }
 
     let existingPost;
     try {

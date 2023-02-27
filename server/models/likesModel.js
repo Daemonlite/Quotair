@@ -6,11 +6,13 @@ const LikeSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
+  
   },
   post: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Content',
     required: true,
+    
   },  
   createdAt: { type: Date, default: Date.now }  
 });

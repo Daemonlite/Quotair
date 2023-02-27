@@ -1,6 +1,13 @@
 const Content = require('../models/contentModel')
 const User = require('../models/userModel')
+const cloudinary = require("cloudinary").v2;
 
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 
 const getContents = async (req,res) => {
     try {
@@ -14,19 +21,30 @@ const getContents = async (req,res) => {
 
 const createPost = async (req,res) => {
 
- const {title,body,image1,image2,category,user} = req.body
+ const {body,image1,image2,category,user,userName,userProfile,isVerified} = req.body
 
-  if(!title || !body){
+  if( !body){
     return res.status(400).json({message:"please add all fields"})
+  }
+  let profileImageUrl;
+  try {
+    const image = req.file;
+    const result = await cloudinary.uploader.upload(image1);
+    profileImageUrl = result.secure_url;
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ message: "Failed to upload profile image" });
   }
 
   const post = await Content.create({
-    title,
     body,
-    image1,
+    image1:profileImageUrl,
     image2,
     category,
-    user
+    user,
+    userName,
+    userProfile,
+    isVerified
   })
 
   if(post){

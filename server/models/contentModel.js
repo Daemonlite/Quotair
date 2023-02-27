@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const contentSchema = new mongoose.Schema({
-    title:{
-        type:String,
-        require:true
-    },
     body:{
         type:String,
         require:true
@@ -33,6 +29,18 @@ const contentSchema = new mongoose.Schema({
     user:{
         type:String,
         require:true
+    },
+    userName:{
+        type:String,
+        require:true
+    },
+    userProfile:{
+        type:String,
+        require:true
+    },
+    isVerified:{
+        type:Boolean,
+        default:false
     }
 },{
     timestamps:true

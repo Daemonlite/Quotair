@@ -8,6 +8,9 @@
 .position{
     margin-top: 100px;
 }
+.nav{
+    height: 50px;
+}
 
 input{
     width: 400px !important;
@@ -17,6 +20,9 @@ input{
 a{
     text-decoration: none !important;
  
+}
+.navbar-brand{
+    font-size: 2rem !important;
 }
 .input{
     border: 1px solid #ccc;
@@ -49,9 +55,59 @@ a{
     margin-left: 250px;
     margin-top: 10px;
     font-weight: bold;
+    
 }
-@media (max-width:600px) {
+
+.login{
+    border: 1px solid #fff;
+    height: 300px;
+    width: 45%;
+    margin: auto;
+    box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+}
+.register{
+    border: 1px solid #fff;
+    height: 520px;
+    width: 35%;
+    margin: auto;
+    box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1); 
+}
+.fit{
+    display: none !important;
+}
+@media (max-width:700px) {
     .find{
+        display: none;
+    }
+    .register{
+        width: 350px;
+    }
+    .login{
+        width: 350px;
+    }
+    .post{
+        margin: 0 auto;
+        width: fit-content;
+
+    }
+    .follow{
+        margin-left: 40px;
+    }
+    .fill{
         display: none !important;
     }
+    .fit{
+        display: block !important;  
+    }
+    .input{
+        width: 250px;
+    }
+    .icons{
+        margin-left: 10px;
+    }
+  .but{
+    margin-left: -5px;
+  }
+
+  
 }
