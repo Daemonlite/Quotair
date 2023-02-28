@@ -18,12 +18,13 @@ import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Users from "./Users";
+import SideMenu from './SideMenu'
 const Home = () => {
   const [active, setActive] = useState(false);
   const [post, setPost] = useState([]);
   const [content, setContent] = useState("");
-  const [comments, setComments] = useState([]);
-  const [liked,setliked]=useState(false)
+  const [ comment ,setComments] = useState([]);
   const navigate = useNavigate;
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -35,12 +36,6 @@ const Home = () => {
     axios
       .get("http://localhost:9000/api/posts")
       .then((res) => setPost(res.data))
-      .catch((err) => console.log(err));
-  }, []);
-  useEffect(() => {
-    axios
-      .get("http://localhost:9000/api/comments")
-      .then((res) => setComments(res.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -60,9 +55,8 @@ const Home = () => {
       })
       .catch((err) => console.log(err));
   };
-
   return (
-    <div className="position">
+    <div className="position" >
       <div className="post">
         <br />
         <div className="ava">
@@ -99,6 +93,7 @@ const Home = () => {
         <br />
       </div>
       <br />
+     
       {post.map((res) => (
         <div className="key" key={res._id}>
           <Container maxWidth="sm">
@@ -119,7 +114,7 @@ const Home = () => {
                   <div className="follow">+Follow</div>
                 </div>
 
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bold'}}>
                   {res.body}
                 </Typography>
               </CardContent>
@@ -133,14 +128,10 @@ const Home = () => {
               <CardActions
                 sx={{ display: "flex", justifyContent: "space-around" }}
               >
+                
                 <IconButton
                   aria-label="add to favorites"
-                  // style={{
-                  //   color: res.includes(user._id) ? "red" : "inherit",
-                  // }}
-                >
-                  <FavoriteIcon
-                    onClick={() => {
+                  onClick={() => {
                       axios
                         .post("http://localhost:9000/api/reactions", {
                           user: user._id,
@@ -149,18 +140,22 @@ const Home = () => {
                         .then((res) => {
                           console.log(res.data);
                           toast.warn("liked");
+                       
                         })
                         .catch((err) => {
                           console.log(err);
                           toast.error("cannot like twice");
                         });
                     }}
+                >
+                  <FavoriteIcon
+                 
                   />{" "}
                   {res.likes.length}
                 </IconButton>
 
-                <IconButton aria-label="comment">
-                  <ChatBubbleOutlineIcon onClick={() => setActive(true)} />{" "}
+                <IconButton aria-label="comment" onClick={() => setActive(true)}>
+                  <ChatBubbleOutlineIcon  />{" "}
                   {res.comments.length}
                 </IconButton>
 
@@ -204,10 +199,10 @@ const Home = () => {
                   {res.comments.map((turn) => (
                     <div className="comments" key={turn._id}>
                       <div className="details">
-                        <Avatar src={turn.userProfile} />
+                        <Avatar src={turn.userProfile}  sx={{marginLeft:"10px"}}/>
                         <p className="username">{turn.userName}</p>
                       </div>
-                      <p style={{ marginLeft: "10px" }}>{turn.content}</p>
+                      <p style={{ marginLeft: "18px" }}>{turn.content}</p>
                     </div>
                   ))}
                 </div>
@@ -220,6 +215,9 @@ const Home = () => {
           </Container>
         </div>
       ))}
+       <Users />
+       <SideMenu/>
+      <br />
     </div>
   );
 };
