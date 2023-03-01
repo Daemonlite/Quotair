@@ -81,14 +81,14 @@ export default function NestedList() {
       </ListItemButton>
     </List>
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <ListItem>
+    <a href="/gallery" style={{color:'black'}}> <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+        <ImageIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-      </ListItem>
+      <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+      </ListItem></a>
       <ListItem>
         <ListItemAvatar>
           <Avatar>
@@ -97,7 +97,8 @@ export default function NestedList() {
         </ListItemAvatar>
         <ListItemText primary="Work" secondary="Jan 7, 2014" />
       </ListItem>
-      <ListItem>
+   <a href="/vacations" style={{color:'black'}}>
+   <ListItem>
         <ListItemAvatar>
           <Avatar>
             <BeachAccessIcon />
@@ -105,6 +106,7 @@ export default function NestedList() {
         </ListItemAvatar>
         <ListItemText primary="Vacation" secondary="July 20, 2014" />
       </ListItem>
+   </a>
     </List>
   </div>
   );

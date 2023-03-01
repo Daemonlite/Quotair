@@ -21,7 +21,7 @@ Add to your feed
 </p>
     
 {users.map((res)=>
-<div className="infos">
+<div className="infos" key={res._id}>
 <div className="details">
 <Avatar src={res.profile} style={{marginLeft:"15px"}}/>
 <p className="username" style={{fontWeight:"bold"}}>{res.fullName}</p>

@@ -8,6 +8,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import CreatePost from './pages/CreatePost';
+import UserGallery from './pages/UserGallery';
+import CreateVacation from './pages/CreateVacation';
+import Vacations from './pages/Vacations';
 
 
 
@@ -22,6 +25,9 @@ function App() {
   <Route path='/' element={<Login/>} />
   <Route path='/register' element={<Register/>}/>
   <Route path='/create_post' element={<CreatePost/>}/>
+  <Route path='/gallery' element={<UserGallery/>} />
+  <Route path='/vacations/create'  element={<CreateVacation/>}/>
+  <Route path='/vacations' element={<Vacations/>}/>
 </Routes>
 </BrowserRouter>
     </div>
