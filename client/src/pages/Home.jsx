@@ -35,10 +35,17 @@ const Home = () => {
   useEffect(() => {
     axios
       .get("http://localhost:9000/api/posts")
-      .then((res) => setPost(res.data))
+      .then((res) => {
+        const sortedPosts = res.data.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+        setPost(sortedPosts);
+      })
       .catch((err) => console.log(err));
-  }, []);
+  }, [post]);
 
+  
+  
   const addComment = (post) => {
     axios
       .post("http://localhost:9000/api/comments", {
@@ -148,9 +155,7 @@ const Home = () => {
                         });
                     }}
                 >
-                  <FavoriteIcon
-                 
-                  />{" "}
+                  <FavoriteIcon />{" "}
                   {res.likes.length}
                 </IconButton>
 

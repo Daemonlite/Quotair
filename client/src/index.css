@@ -102,21 +102,29 @@ a{
 .find{
     display: inherit;
     float: right;
-    margin-top: -303rem;
     border: 1px solid #ccc;
     /* box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1) ; */
     max-width: 370px;
     margin-right: 10px;
     margin-left: 10px;
+    position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 100px;
+
 }
 .side{
     float: left;
-    margin-top: -303rem;
     border: 1px solid #fff;
     width: 350px;
     margin-left: 20px;
     height: 350px;
+       position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 100px;
 }
+
 .tag{
     margin-left: 10px;
     font-family: Arial, Helvetica, sans-serif;
